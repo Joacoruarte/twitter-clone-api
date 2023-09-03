@@ -1,0 +1,36 @@
+### Get de usuarios
+GET http://localhost:3001/users
+
+### Get de usuario por id
+GET http://localhost:3001/users/3
+
+### Post register user
+POST http://localhost:3001/users/register
+content-type: application/json
+
+{
+   "first_name": "tengo",
+   "last_name": "cookies",
+   "email": "tengocookies@gmail.com",
+   "birthday": "2001-10-15",
+   "password": "1234"
+}
+
+### Post login user
+POST http://localhost:3001/users/login
+content-type: application/json
+
+{
+   "identifier": "donjuan@gmail.com",
+   "password": "1234"
+}
+
+### Get user in token
+GET http://localhost:3001/users/context
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMywiZW1haWwiOiJ0ZW5nb2Nvb2tpZXNAZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAdGVuZ29jb29raWVzIiwiaWF0IjoxNjkzMjgwMDQ4LCJleHAiOjQyODUyODAwNDh9.0ffRAMpZdq4jkm3fc73bZwbGO_fTc2-e4WXjwPSGL7A
+
+### Get tweets
+GET http://localhost:3001/tweets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTMyNzkxNzMsImV4cCI6NDI4NTI3OTE3M30.rRGZQxHAwsIjfz2mpoV14fGEITv5rNjtk1wiHXqpf7s
