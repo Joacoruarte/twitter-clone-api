@@ -63,7 +63,7 @@ router.post('/login', async (req, res) => {
       res.cookie('set-cookie', token, {
         httpOnly: false,
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
-        secure: false,
+        secure: process.env.NODE_ENV === 'production' ? true : false,
         path: '/',
         domain: process.env.NODE_ENV === 'production' ? 'twitter-clone-client-pi.vercel.app' : 'localhost'
       });
