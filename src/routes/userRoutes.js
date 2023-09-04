@@ -28,9 +28,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/checks', async (req, res) => {
   const { identifier } = req.body;
-  console.log('INDENTIFIER: ', identifier);
   const user = await Users.getUserByIdentifier({ identifier, req, res });
-  console.log('USER', user);
   if(!user) return res.status(400).json({ message: 'User does not match' });
 
   if (user.email_address === identifier || user.user_handle === identifier || user.phone_number === identifier) {
@@ -40,7 +38,6 @@ router.post('/checks', async (req, res) => {
       phone_number: 'Teléfono'
     }
     const type = types[Object.keys(user).find(key => user[key] === identifier)];
-    console.log('TYPE: ', type);
     return res.status(200).json({ identified: true, type });
   }
   res.status(400).json({ message: 'User does not match' });
@@ -48,12 +45,14 @@ router.post('/checks', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { identifier, password } = req.body;
+  console.log('BODY: ', req.body);
   const user = await Users.getUserByIdentifier({ identifier, req, res });
-
+  console.log('USER: ', user);
   if(!user) return res.status(400).json({ message: 'User does not match' });
 
   if (user.email_address === identifier || user.user_handle === identifier || user.phone_number === identifier) {
     const match = await compareAsync(password, user.password_hash)
+    console.log('MATCH: ', match);
 
     const userForToken = {
       user_id: user.user_id,
