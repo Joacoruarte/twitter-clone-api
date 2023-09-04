@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 dotenv.config();
 const userRoutes = require('./routes/userRoutes');
 const tweetRoutes = require('./routes/tweetRoutes');
-
+console.log(process.env.NODE_ENV);
 const app = express();
 app.disable('x-powered-by')
 app.use(cookieParser());

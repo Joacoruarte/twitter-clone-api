@@ -37,11 +37,9 @@ class Users {
 
   static async getUserByIdentifier({ identifier, req, res }) {
     try {
-      console.log('INDENTIFIER: ', identifier);
       const SQL = 'SELECT user_id, email_address, user_handle, phone_number, password_hash FROM users WHERE email_address = ? OR user_handle = ? OR phone_number = ? '
       const VALUES = [identifier, identifier, identifier];
       const user = await query(SQL, VALUES);
-      console.log('USER', user)
       return user[0];
     } catch (error) {
       console.error('Error al obtener usuario: ', error);

@@ -45,14 +45,11 @@ router.post('/checks', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { identifier, password } = req.body;
-  console.log('BODY: ', req.body);
   const user = await Users.getUserByIdentifier({ identifier, req, res });
-  console.log('USER: ', user);
   if(!user) return res.status(400).json({ message: 'User does not match' });
 
   if (user.email_address === identifier || user.user_handle === identifier || user.phone_number === identifier) {
     const match = await compareAsync(password, user.password_hash)
-    console.log('MATCH: ', match);
 
     const userForToken = {
       user_id: user.user_id,
@@ -65,7 +62,10 @@ router.post('/login', async (req, res) => {
     if(match) {
       res.cookie('set-cookie', token, {
         httpOnly: false,
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
+        secure: false,
+        path: '/',
+        domain: process.env.NODE_ENV === 'production' ? 'twitter-clone-client-pi.vercel.app' : 'localhost'
       });
 
       return res.status(200).json({ message: 'You are logged in' })
