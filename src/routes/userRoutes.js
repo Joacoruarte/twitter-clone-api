@@ -29,7 +29,6 @@ router.get('/:id', async (req, res) => {
 router.post('/checks', async (req, res) => {
   const { identifier } = req.body;
   const user = await Users.getUserByIdentifier({ identifier, req, res });
-  
   if(!user) return res.status(400).json({ message: 'User does not match' });
 
   if (user.email_address === identifier || user.user_handle === identifier || user.phone_number === identifier) {

@@ -13,7 +13,11 @@ app.disable('x-powered-by')
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
-app.use(cors({ origin: [process.env.BASE_URL_FRONT_DEVELOPMENT, process.env.BASE_URL_FRONT_PRODUCTION], credentials: true }));
+app.use(cors({ 
+  origin: [process.env.BASE_URL_FRONT_DEVELOPMENT, process.env.BASE_URL_FRONT_PRODUCTION], 
+  credentials: true,
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE']
+ }));
 app.get('/', (req, res) => res.json({ message: 'Hello World' }));
 app.use('/tweets', tweetRoutes);
 app.use('/users', userRoutes);
