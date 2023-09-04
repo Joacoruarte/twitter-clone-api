@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
         secure: process.env.NODE_ENV === 'production' ? true : false,
         path: '/',
-        domain: process.env.NODE_ENV === 'production' ? 'twitter-clone-client-pi.vercel.app' : 'localhost'
+        domain: process.env.NODE_ENV === 'production' ? '.vercel.app' : 'localhost'
       });
 
       return res.status(200).json({ message: 'You are logged in' })
