@@ -90,9 +90,10 @@ export class UsersController {
                maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
                secure: process.env.NODE_ENV === "production" ? true : false,
                path: "/",
+               samesite: 'none',
                domain:
                   process.env.NODE_ENV === "production"
-                     ? "twitter-clone-client-pi.vercel.app"
+                     ? ".vercel.app"
                      : "localhost",
             });
 
@@ -131,9 +132,10 @@ export class UsersController {
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
             secure: process.env.NODE_ENV === "production" ? true : false,
             path: "/",
+            samesite: 'none',
             domain:
                process.env.NODE_ENV === "production"
-                  ? "twitter-clone-client-pi.vercel.app"
+                  ? ".vercel.app"
                   : "localhost",
          });
 
