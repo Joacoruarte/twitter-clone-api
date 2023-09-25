@@ -8,6 +8,7 @@ dotenv.config();
 //   // password: process.env.DB_PASSWORD,
 //   database: process.env.DB_NAME,
 // }
+
 const connection = mysql.createConnection(process.env.DB_PLANET_SCALE_STRING_CONNECTION);
 
 connection

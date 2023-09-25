@@ -92,7 +92,7 @@ export class UsersController {
                path: "/",
                domain:
                   process.env.NODE_ENV === "production"
-                     ? ".vercel.app"
+                     ? "twitter-clone-client-pi.vercel.app"
                      : "localhost",
             });
 
@@ -133,7 +133,7 @@ export class UsersController {
             path: "/",
             domain:
                process.env.NODE_ENV === "production"
-                  ? ".vercel.app"
+                  ? "twitter-clone-client-pi.vercel.app"
                   : "localhost",
          });
 
