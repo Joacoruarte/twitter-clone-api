@@ -88,13 +88,13 @@ export class UsersController {
             res.cookie("session_cookie", token, {
                httpOnly: false,
                maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
-               secure: process.env.NODE_ENV === "production" ? true : false,
-               path: "/",
-               samesite: 'none',
-               domain:
-                  process.env.NODE_ENV === "production"
-                     ? ".vercel.app"
-                     : "localhost",
+              //  secure: process.env.NODE_ENV === "production" ? true : false,
+              //  path: "/",
+              //  samesite: 'none',
+              //  domain:
+              //     process.env.NODE_ENV === "production"
+              //        ? ".vercel.app"
+              //        : "localhost",
             });
 
             return res.status(200).json({ message: "You are logged in" });
@@ -130,13 +130,13 @@ export class UsersController {
          res.cookie("session_cookie", token, {
             httpOnly: false,
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
-            secure: process.env.NODE_ENV === "production" ? true : false,
-            path: "/",
-            samesite: 'none',
-            domain:
-               process.env.NODE_ENV === "production"
-                  ? ".vercel.app"
-                  : "localhost",
+            // secure: process.env.NODE_ENV === "production" ? true : false,
+            // path: "/",
+            // samesite: 'none',
+            // domain:
+            //    process.env.NODE_ENV === "production"
+            //       ? ".vercel.app"
+            //       : "localhost",
          });
 
          res.status(201).json({ message: "User created successfully" });
