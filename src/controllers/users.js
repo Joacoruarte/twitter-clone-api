@@ -86,15 +86,12 @@ export class UsersController {
 
          if (match) {
             res.cookie("session_cookie", token, {
-               httpOnly: false,
-               maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
-               secure: process.env.NODE_ENV === "production" ? true : false,
-               path: "/",
-               samesite: 'none',
-               domain:
-                  process.env.NODE_ENV === "production"
-                     ? ".vercel.app"
-                     : "localhost",
+              httpOnly: false,
+              maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días,
+              secure: true, // Configúralo como true si tu sitio utiliza HTTPS
+              path: "/",
+              sameSite: 'none', // Importante para sitios que requieren CORS entre dominios
+              domain: "twitter-clone-client-pi.vercel.app", // Dominio de tu frontend en producción
             });
 
             return res.status(200).json({ message: "You are logged in" });
