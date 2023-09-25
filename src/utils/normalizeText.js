@@ -1,0 +1,1 @@
+export const normalizeText = (text) => text.split(' ').join('').trim().toLowerCase()

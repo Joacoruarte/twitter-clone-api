@@ -4,6 +4,18 @@ GET http://localhost:3001/users
 ### Get de usuario por id
 GET http://localhost:3001/users/3
 
+### Get user followers
+GET http://localhost:3001/users/5/followers
+content-type: application/json
+
+### Post user by identifier
+POST  http://localhost:3001/users/checks
+content-type: application/json
+
+{
+   "identifier": "ruartejoaquin@gmail.com"
+}
+
 ### Post register user
 POST http://localhost:3001/users/register
 content-type: application/json
@@ -21,16 +33,35 @@ POST http://localhost:3001/users/login
 content-type: application/json
 
 {
-   "identifier": "donjuan@gmail.com",
-   "password": "1234"
+   "identifier": "ruartejoaquin@gmail.com",
+   "password": "123456"
 }
 
-### Get user in token
+### Get user from token
 GET http://localhost:3001/users/context
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMywiZW1haWwiOiJ0ZW5nb2Nvb2tpZXNAZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAdGVuZ29jb29raWVzIiwiaWF0IjoxNjkzMjgwMDQ4LCJleHAiOjQyODUyODAwNDh9.0ffRAMpZdq4jkm3fc73bZwbGO_fTc2-e4WXjwPSGL7A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InJ1YXJ0ZWpvYXF1aW5AZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAam9hcXVpbnJ1YXJ0ZSIsImlhdCI6MTY5NTYwODI5NCwiZXhwIjo0Mjg3NjA4Mjk0fQ.N7gTcWeWLv2doGeDiBE5yY5TCxpmZk-MKCEqhNXptB8
 
-### Get tweets
+### Get tweets for user
 GET http://localhost:3001/tweets
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTMyNzkxNzMsImV4cCI6NDI4NTI3OTE3M30.rRGZQxHAwsIjfz2mpoV14fGEITv5rNjtk1wiHXqpf7s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InJ1YXJ0ZWpvYXF1aW5AZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAam9hcXVpbnJ1YXJ0ZSIsImlhdCI6MTY5NTYwODI5NCwiZXhwIjo0Mjg3NjA4Mjk0fQ.N7gTcWeWLv2doGeDiBE5yY5TCxpmZk-MKCEqhNXptB8
+
+### Get tweets by user id
+GET http://localhost:3001/tweets?userId=5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InJ1YXJ0ZWpvYXF1aW5AZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAam9hcXVpbnJ1YXJ0ZSIsImlhdCI6MTY5NTYwODI5NCwiZXhwIjo0Mjg3NjA4Mjk0fQ.N7gTcWeWLv2doGeDiBE5yY5TCxpmZk-MKCEqhNXptB8
+
+### Get tweet by id
+GET http://localhost:3001/tweets/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InJ1YXJ0ZWpvYXF1aW5AZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAam9hcXVpbnJ1YXJ0ZSIsImlhdCI6MTY5Mzg3Nzg0NiwiZXhwIjo0Mjg1ODc3ODQ2fQ.XcPB0yzsO9j8vZNeU5_h59yfuqXkFrNd5-iZZLyp9eY
+
+### Post tweet
+POST http://localhost:3001/tweets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InJ1YXJ0ZWpvYXF1aW5AZ21haWwuY29tIiwidXNlcl9oYW5kbGUiOiJAam9hcXVpbnJ1YXJ0ZSIsImlhdCI6MTY5NTYwODI5NCwiZXhwIjo0Mjg3NjA4Mjk0fQ.N7gTcWeWLv2doGeDiBE5yY5TCxpmZk-MKCEqhNXptB8
+
+{
+   "content": "New tweet from light postman"
+}

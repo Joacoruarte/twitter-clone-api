@@ -1,12 +1,16 @@
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+dotenv.config();
 
-//   {
-//   host: process.env.DB_PLANET_SCALE_HOST,
-//   user: process.env.DB_PLANET_SCALE_USER,
-//   password: process.env.DB_PLANET_SCALE_PASSWORD,
-//   database: process.env.DB_PLANET_SCALE_NAME,
-// }
-const connection = mysql.createConnection(process.env.DB_PLANET_SCALE_STRING_CONNECTION);
+const connection = mysql.createConnection(
+  {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  // password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+}
+  
+);
 
 connection
   .then((res) => {
@@ -16,7 +20,7 @@ connection
     console.log('-- Error connecting DB: --', err);
   });
  
-async function executeQuery(query, params = []) {
+export async function executeQuery(query, params = []) {
   try {
     const db = await connection
     const [rows, fields] = await db.query(query, params);
@@ -26,4 +30,5 @@ async function executeQuery(query, params = []) {
   }
 }
 
-module.exports = { db: connection, query: executeQuery };
+export const db = connection;
+export const query = executeQuery;

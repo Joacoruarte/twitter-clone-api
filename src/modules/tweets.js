@@ -1,7 +1,5 @@
-const { query } = require('../db');
-const TweetDTO = require('../dtos/tweet');
-const UserDTO = require('../dtos/user');
-const formatTweet = require('../utils/formatTweet');
+import { query } from '../db.js';
+import formatTweet from '../utils/formatTweet.js';
 
 class Tweets {
   constructor({}) {}
@@ -94,4 +92,4 @@ class Tweets {
   }
 }
 
-module.exports = Tweets;
+export default Tweets;

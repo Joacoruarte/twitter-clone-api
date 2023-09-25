@@ -1,5 +1,5 @@
-const TweetDTO = require("../dtos/tweet");
-const UserDTO = require("../dtos/user");
+import TweetDTO from "../dtos/tweet.js";
+import UserDTO from "../dtos/user.js";
 
 function formatTweet(tweet) {
     const tweetDTO = new TweetDTO({
@@ -27,5 +27,5 @@ function formatTweet(tweet) {
     };
 }
 
-module.exports = formatTweet;
+export default formatTweet;
   

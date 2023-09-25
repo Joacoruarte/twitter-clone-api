@@ -1,10 +1,8 @@
-const { query } = require('../db');
-const util = require('util');
-const bcrypt = require('bcrypt');
+import { query } from '../db.js';
+import { promisify } from 'util';
+import { hash } from 'bcrypt';
 const saltRounds = 10;
-const hashAsync = util.promisify(bcrypt.hash);
-const jwt = require('jsonwebtoken')
-
+const hashAsync = promisify(hash);
 
 class Users {
   constructor({}) {}
@@ -106,4 +104,4 @@ class Users {
   }
 }
 
-module.exports = Users;
+export default Users;

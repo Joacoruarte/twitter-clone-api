@@ -9,4 +9,4 @@ class TweetDTO {
 }
 
 
-module.exports = TweetDTO;
+export default TweetDTO;
