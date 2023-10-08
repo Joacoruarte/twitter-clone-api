@@ -7,6 +7,7 @@ import { usersRouter } from './routes/users.js';
 const port = process.env.PORT ?? 3001;
 import './db.js';
 import { corsMiddleware } from './middlewares/cors.js';
+import { pingForDb } from './utils/pingForDb.js';
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.use(corsMiddleware());
 app.get('/', (req, res) => res.json({ message: 'Hello World' }));
 app.use('/tweets', tweetsRouter);
 app.use('/users', usersRouter);
+
+const twentyFourHours = 1000 * 60 * 60 * 24;
+setInterval(pingForDb, twentyFourHours)
 
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
